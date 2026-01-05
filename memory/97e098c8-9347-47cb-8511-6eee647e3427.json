@@ -1,0 +1,22 @@
+[
+  {
+    "role": "user",
+    "content": "Hello!",
+    "timestamp": "2026-01-04T18:09:50.039963"
+  },
+  {
+    "role": "assistant",
+    "content": "Hello! Welcome to my website. How can I assist you today?",
+    "timestamp": "2026-01-04T18:09:50.039989"
+  },
+  {
+    "role": "user",
+    "content": "what is your name?",
+    "timestamp": "2026-01-04T18:10:02.925700"
+  },
+  {
+    "role": "assistant",
+    "content": "I\u2019m Kamil Kuchta. It\u2019s great to connect with you! How can I help you today?",
+    "timestamp": "2026-01-04T18:10:02.925724"
+  }
+]

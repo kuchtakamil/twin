@@ -1,0 +1,21 @@
+{
+  "full_name": "Kamil Kuchta",
+  "name": "Kamil",
+  "current_role": "Senior Software Engineer",
+  "location": "Kraków",
+  "email": "your.email@example.com",
+  "linkedin": "linkedin.com/in/kamil",
+  "specialties": [
+    "Java",
+    "Erlang",
+    "AI"
+  ],
+  "years_experience": 11,
+  "education": [
+    {
+      "degree": "Master of Engineering",
+      "institution": "AGH",
+      "year": "2013"
+    }
+  ]
+}
