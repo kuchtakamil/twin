@@ -3,7 +3,9 @@ name = "twin"
 version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "boto3-stubs~=1.42.21",
+]
 
 [tool.uv.workspace]
 members = [

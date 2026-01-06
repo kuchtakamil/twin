@@ -116,4 +116,15 @@ Thumbs.db
 .tmp/
 temp/
 
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate.d/
+*.tfvars
+!terraform.tfvars
+!prod.tfvars
+
+# Lambda packages
 lambda-deployment.zip
