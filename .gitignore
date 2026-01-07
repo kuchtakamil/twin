@@ -20,9 +20,6 @@
 # production
 /build
 
-lambda-package/
-lambda-deployment/
-
 # misc
 .DS_Store
 *.pem
@@ -122,9 +119,22 @@ temp/
 .terraform/
 .terraform.lock.hcl
 terraform.tfstate.d/
-*.tfvars
-!terraform.tfvars
-!prod.tfvars
+*.tfvars.secret
 
 # Lambda packages
 lambda-deployment.zip
+lambda-package/
+lambda-deployment/
+
+# Memory storage (contains conversation history)
+memory/
+
+.env.*
+!.env.example
+
+node_modules/
+
+*.pyc
+
+# AWS
+.aws/
