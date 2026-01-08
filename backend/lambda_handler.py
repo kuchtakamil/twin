@@ -1,7 +1,7 @@
 import sys
 import os
 
-def lambda_handler(event, context):
+def handler(event, context):
     print(f"PYTHONPATH: {sys.path}")
     print(f"CWD: {os.getcwd()}")
     print(f"Directory listing: {os.listdir(os.getcwd())}")
