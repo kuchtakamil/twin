@@ -118,11 +118,7 @@ resource "aws_iam_role_policy_attachment" "lambda_s3" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
   role       = aws_iam_role.lambda_role.name
 }
-data "archive_file" "lambda" {
-  type        = "zip"
-  source_dir  = "${path.module}/../backend"
-  output_path = "${path.module}/../backend/lambda-deployment.zip"
-}
+
 # Lambda function
 resource "aws_lambda_function" "api" {
   filename         = "${path.module}/../backend/lambda-deployment.zip"
