@@ -29,6 +29,8 @@ else
   terraform workspace select "$ENVIRONMENT"
 fi
 
+terraform state list | grep archive_file
+
 # Use prod.tfvars for production environment
 if [ "$ENVIRONMENT" = "prod" ]; then
   TF_APPLY_CMD=(terraform apply -var-file=prod.tfvars -var="project_name=$PROJECT_NAME" -var="environment=$ENVIRONMENT" -auto-approve)
