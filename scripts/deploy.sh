@@ -29,7 +29,7 @@ else
   terraform workspace select "$ENVIRONMENT"
 fi
 
-terraform state rm data.archive_file.lambda || true
+#terraform state rm data.archive_file.lambda || true
 
 # Use prod.tfvars for production environment
 if [ "$ENVIRONMENT" = "prod" ]; then
