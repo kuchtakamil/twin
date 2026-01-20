@@ -108,7 +108,7 @@ export default function Twin() {
             <div className="bg-gradient-to-r from-slate-700 to-slate-800 text-white p-4 rounded-t-lg">
                 <h2 className="text-xl font-semibold flex items-center gap-2">
                     <Bot className="w-6 h-6" />
-                    Ask my digital twin about my professional experience
+                    Ask my digital twin about my experience
                 </h2>
             </div>
 
@@ -125,7 +125,7 @@ export default function Twin() {
                         ) : (
                             <Bot className="w-12 h-12 mx-auto mb-3 text-gray-400" />
                         )}
-                        <p>What would you like to know about me?</p>
+                        <p>What would you like to know about my work and expertise?</p>
                     </div>
                 )}
 
@@ -214,7 +214,7 @@ export default function Twin() {
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         onKeyDown={handleKeyPress}
-                        placeholder="Type your message..."
+                        placeholder="Type your question here..."
                         className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent text-gray-800"
                         disabled={isLoading}
                         autoFocus

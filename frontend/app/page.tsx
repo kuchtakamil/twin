@@ -14,8 +14,8 @@ export default function Home() {
           </div>
 
           <footer className="mt-8 text-center text-sm text-gray-500">
-            <p>© Kamil Kuchta· kamilkuchta.pl</p>
-            <p>Personal AI digital twin · LLM-based · Not a source of absolute truth</p>
+            <p>© Kamil Kuchta · kamilkuchta.pl</p>
+            <p>Personal AI digital twin · LLM-based · Not an absolute source of truth</p>
           </footer>
         </div>
       </div>
