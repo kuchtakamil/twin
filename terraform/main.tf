@@ -13,7 +13,10 @@ locals {
   cors_origins = var.use_custom_domain ? [
     "https://${var.root_domain}",
     "https://www.${var.root_domain}"
-  ] : ["https://${aws_cloudfront_distribution.main.domain_name}"]
+  ] : [
+    "https://${aws_cloudfront_distribution.main.domain_name}",
+    "https://twin.kamilkuchta.pl"  # VPS reverse proxy domain
+  ]
 
   common_tags = {
     Project     = var.project_name
