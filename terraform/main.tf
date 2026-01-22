@@ -9,6 +9,12 @@ locals {
 
   name_prefix = "${var.project_name}-${var.environment}"
 
+  # CORS origins - restrict to specific domains instead of wildcard
+  cors_origins = var.use_custom_domain ? [
+    "https://${var.root_domain}",
+    "https://www.${var.root_domain}"
+  ] : ["https://${aws_cloudfront_distribution.main.domain_name}"]
+
   common_tags = {
     Project     = var.project_name
     Environment = var.environment
@@ -109,14 +115,34 @@ resource "aws_iam_role_policy_attachment" "lambda_basic" {
   role       = aws_iam_role.lambda_role.name
 }
 
-resource "aws_iam_role_policy_attachment" "lambda_bedrock" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonBedrockFullAccess"
-  role       = aws_iam_role.lambda_role.name
+# Least-privilege policy for S3 - only access to the memory bucket
+resource "aws_iam_role_policy" "lambda_s3" {
+  name = "${local.name_prefix}-lambda-s3"
+  role = aws_iam_role.lambda_role.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect   = "Allow"
+      Action   = ["s3:GetObject", "s3:PutObject"]
+      Resource = "${aws_s3_bucket.memory.arn}/*"
+    }]
+  })
 }
 
-resource "aws_iam_role_policy_attachment" "lambda_s3" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
-  role       = aws_iam_role.lambda_role.name
+# Least-privilege policy for Bedrock - only InvokeModel on Nova models
+resource "aws_iam_role_policy" "lambda_bedrock" {
+  name = "${local.name_prefix}-lambda-bedrock"
+  role = aws_iam_role.lambda_role.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect   = "Allow"
+      Action   = ["bedrock:InvokeModel"]
+      Resource = "arn:aws:bedrock:*::foundation-model/amazon.nova-*"
+    }]
+  })
 }
 
 # Lambda function
@@ -133,7 +159,7 @@ resource "aws_lambda_function" "api" {
 
   environment {
     variables = {
-      CORS_ORIGINS     = var.use_custom_domain ? "https://${var.root_domain},https://www.${var.root_domain}" : "https://${aws_cloudfront_distribution.main.domain_name}"
+      CORS_ORIGINS     = join(",", local.cors_origins)
       S3_BUCKET        = aws_s3_bucket.memory.id
       USE_S3           = "true"
       BEDROCK_MODEL_ID = var.bedrock_model_id
@@ -154,7 +180,7 @@ resource "aws_apigatewayv2_api" "main" {
     allow_credentials = false
     allow_headers     = ["*"]
     allow_methods     = ["GET", "POST", "OPTIONS"]
-    allow_origins     = ["*"]
+    allow_origins     = local.cors_origins
     max_age           = 300
   }
 }

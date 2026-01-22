@@ -1,15 +1,19 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 import os
 from dotenv import load_dotenv
 from typing import Optional, List, Dict
 import json
 import uuid
+import re
 from datetime import datetime
 import boto3
 from botocore.exceptions import ClientError
 from context import prompt
+import logging
+
+logger = logging.getLogger(__name__)
 
 # Load environment variables
 load_dotenv()
@@ -52,8 +56,8 @@ if USE_S3:
 
 # Request/Response models
 class ChatRequest(BaseModel):
-    message: str
-    session_id: Optional[str] = None
+    message: str = Field(..., min_length=1, max_length=4000)
+    session_id: Optional[str] = Field(None, pattern=r'^[a-f0-9\-]{36}$')
 
 
 class ChatResponse(BaseModel):
@@ -68,7 +72,14 @@ class Message(BaseModel):
 
 
 # Memory management functions
+def validate_session_id(session_id: str) -> bool:
+    """Validate session_id is a valid UUID format to prevent path traversal attacks"""
+    return bool(re.match(r'^[a-f0-9\-]{36}$', session_id))
+
+
 def get_memory_path(session_id: str) -> str:
+    if not validate_session_id(session_id):
+        raise ValueError("Invalid session ID format")
     return f"{session_id}.json"
 
 
@@ -158,34 +169,30 @@ def call_bedrock(conversation: List[Dict], user_message: str) -> str:
             print(f"Bedrock access denied: {e}")
             raise HTTPException(status_code=403, detail="Access denied to Bedrock model")
         else:
-            print(f"Bedrock error: {e}")
-            raise HTTPException(status_code=500, detail=f"Bedrock error: {str(e)}")
+            logger.error(f"Chat error: {str(e)}", exc_info=True)
+            raise HTTPException(status_code=500, detail="An internal error occurred")
 
 
 @app.get("/")
 async def root():
-    return {
-        "message": "AI Digital Twin API (Powered by AWS Bedrock)",
-        "memory_enabled": True,
-        "storage": "S3" if USE_S3 else "local",
-        "ai_model": BEDROCK_MODEL_ID
-    }
+    return {"status": "ok"}
 
 
 @app.get("/health")
 async def health_check():
-    return {
-        "status": "healthy",
-        "use_s3": USE_S3,
-        "bedrock_model": BEDROCK_MODEL_ID
-    }
+    return {"status": "healthy"}
 
 
 @app.post("/chat", response_model=ChatResponse)
 async def chat(request: ChatRequest):
     try:
-        # Generate session ID if not provided
-        session_id = request.session_id or str(uuid.uuid4())
+        # Generate session ID if not provided, validate if provided
+        if request.session_id:
+            if not validate_session_id(request.session_id):
+                raise HTTPException(status_code=400, detail="Invalid session ID format")
+            session_id = request.session_id
+        else:
+            session_id = str(uuid.uuid4())
 
         # Load conversation history
         conversation = load_conversation(session_id)
@@ -213,13 +220,15 @@ async def chat(request: ChatRequest):
     except HTTPException:
         raise
     except Exception as e:
-        print(f"Error in chat endpoint: {str(e)}")
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.error(f"Chat error: {str(e)}", exc_info=True)
+        raise HTTPException(status_code=500, detail="An internal error occurred")
 
 
 @app.get("/conversation/{session_id}")
 async def get_conversation(session_id: str):
     """Retrieve conversation history"""
+    if not validate_session_id(session_id):
+        raise HTTPException(status_code=400, detail="Invalid session ID format")
     try:
         conversation = load_conversation(session_id)
         return {"session_id": session_id, "messages": conversation}
