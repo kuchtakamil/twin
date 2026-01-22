@@ -29,7 +29,15 @@ else
   terraform workspace select "$ENVIRONMENT"
 fi
 
-#terraform state rm data.archive_file.lambda || true
+# Remove Route53 resources from state if custom domain is disabled
+# This prevents errors when switching from use_custom_domain=true to false
+terraform state rm 'data.aws_route53_zone.root[0]' || true
+terraform state rm 'aws_route53_record.site_validation' || true
+terraform state rm 'aws_acm_certificate_validation.site[0]' || true
+terraform state rm 'aws_route53_record.alias_root[0]' || true
+terraform state rm 'aws_route53_record.alias_root_ipv6[0]' || true
+terraform state rm 'aws_route53_record.alias_www[0]' || true
+terraform state rm 'aws_route53_record.alias_www_ipv6[0]' || true
 
 # Use prod.tfvars for production environment
 if [ "$ENVIRONMENT" = "prod" ]; then
