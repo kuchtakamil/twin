@@ -1,16 +1,16 @@
 from pypdf import PdfReader
 import json
 
-# Read LinkedIn PDF
+# Read CV PDF
 try:
-    reader = PdfReader("./data/linkedin.pdf")
-    linkedin = ""
+    reader = PdfReader("./data/cv.pdf")
+    cv = ""
     for page in reader.pages:
         text = page.extract_text()
         if text:
-            linkedin += text
+            cv += text
 except FileNotFoundError:
-    linkedin = "LinkedIn profile not available"
+    cv = "CV not available"
 
 # Read other data files
 with open("./data/summary.txt", "r", encoding="utf-8") as f:

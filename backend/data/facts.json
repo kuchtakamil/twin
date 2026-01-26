@@ -4,11 +4,21 @@
   "current_role": "Senior Software Engineer",
   "location": "Kraków",
   "email": "work@kamilkuchta.pl",
+  "website": "https://kamilkuchta.pl",
   "linkedin": "https://www.linkedin.com/in/kamil-kuchta-dev/",
   "specialties": [
     "Java",
     "Erlang",
-    "AI"
+    "LLM Integration",
+    "RAG Architecture",
+    "Prompt Engineering",
+    "Software Engineering",
+    "Agile Methodologies",
+    "Testing",
+    "Cloud",
+    "Linux",
+    "AI Development Tools",
+    "Docker"
   ],
   "years_experience": 11,
   "education": [
