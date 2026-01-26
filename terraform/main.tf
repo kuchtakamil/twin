@@ -152,7 +152,9 @@ resource "aws_iam_role_policy" "lambda_bedrock" {
       Action = ["bedrock:InvokeModel"]
       Resource = [
         "arn:aws:bedrock:*::foundation-model/amazon.nova-*",
-        "arn:aws:bedrock:*:*:inference-profile/*amazon.nova-*"
+        "arn:aws:bedrock:*:*:inference-profile/*amazon.nova-*",
+        "arn:aws:bedrock:*::foundation-model/openai.*",
+        "arn:aws:bedrock:*:*:inference-profile/*openai.*"
       ]
     }]
   })
