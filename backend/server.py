@@ -157,7 +157,17 @@ def call_bedrock(conversation: List[Dict], user_message: str) -> str:
         )
 
         # Extract the response text
-        return response["output"]["message"]["content"][0]["text"]
+        content_list = response["output"]["message"]["content"]
+        logger.info(f"Bedrock response content: {content_list}")
+
+        # Search for text content (skip reasoningContent)
+        for content in content_list:
+            if "text" in content:
+                return content["text"]
+
+        # If no text found, log and return error
+        logger.warning(f"No text found in response: {content_list}")
+        raise HTTPException(status_code=500, detail="Model returned no text response")
 
     except ClientError as e:
         error_code = e.response['Error']['Code']
