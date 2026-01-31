@@ -13,7 +13,10 @@ from botocore.exceptions import ClientError
 from context import prompt
 import logging
 
-logger = logging.getLogger(__name__)
+# Configure logging for AWS Lambda
+# Lambda preconfigures a handler, we just need to set the level
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 # Load environment variables
 load_dotenv()
@@ -88,17 +91,24 @@ def load_conversation(session_id: str) -> List[Dict]:
     if USE_S3:
         try:
             response = s3_client.get_object(Bucket=S3_BUCKET, Key=get_memory_path(session_id))
-            return json.loads(response["Body"].read().decode("utf-8"))
+            messages = json.loads(response["Body"].read().decode("utf-8"))
+            logger.info(f"Loaded {len(messages)} messages from S3 for session {session_id}")
+            return messages
         except ClientError as e:
             if e.response["Error"]["Code"] == "NoSuchKey":
+                logger.info(f"No existing conversation in S3 for session {session_id}")
                 return []
+            logger.error(f"S3 error loading conversation: {e}", exc_info=True)
             raise
     else:
         # Local file storage
         file_path = os.path.join(MEMORY_DIR, get_memory_path(session_id))
         if os.path.exists(file_path):
             with open(file_path, "r") as f:
-                return json.load(f)
+                messages = json.load(f)
+                logger.info(f"Loaded {len(messages)} messages from local storage for session {session_id}")
+                return messages
+        logger.info(f"No existing conversation for session {session_id}")
         return []
 
 
@@ -111,12 +121,14 @@ def save_conversation(session_id: str, messages: List[Dict]):
             Body=json.dumps(messages, indent=2),
             ContentType="application/json",
         )
+        logger.info(f"Saved {len(messages)} messages to S3 for session {session_id}")
     else:
         # Local file storage
         os.makedirs(MEMORY_DIR, exist_ok=True)
         file_path = os.path.join(MEMORY_DIR, get_memory_path(session_id))
         with open(file_path, "w") as f:
             json.dump(messages, f, indent=2)
+        logger.info(f"Saved {len(messages)} messages to local storage for session {session_id}")
 
 
 def call_bedrock(conversation: List[Dict], user_message: str) -> str:
@@ -138,6 +150,8 @@ def call_bedrock(conversation: List[Dict], user_message: str) -> str:
         "content": [{"text": user_message}]
     })
 
+    logger.info(f"Calling Bedrock model {BEDROCK_MODEL_ID} with {len(messages)} messages")
+
     try:
         # Call Bedrock using the converse API
         response = bedrock_client.converse(
@@ -153,7 +167,8 @@ def call_bedrock(conversation: List[Dict], user_message: str) -> str:
 
         # Extract the response text
         content_list = response["output"]["message"]["content"]
-        logger.info(f"Bedrock response content: {content_list}")
+        usage = response.get("usage", {})
+        logger.info(f"Bedrock response received - input_tokens: {usage.get('inputTokens')}, output_tokens: {usage.get('outputTokens')}")
 
         # Search for text content (skip reasoningContent)
         for content in content_list:
@@ -167,14 +182,13 @@ def call_bedrock(conversation: List[Dict], user_message: str) -> str:
     except ClientError as e:
         error_code = e.response['Error']['Code']
         if error_code == 'ValidationException':
-            # Handle message format issues
-            print(f"Bedrock validation error: {e}")
+            logger.error(f"Bedrock validation error: {e}", exc_info=True)
             raise HTTPException(status_code=400, detail="Invalid message format for Bedrock")
         elif error_code == 'AccessDeniedException':
-            print(f"Bedrock access denied: {e}")
+            logger.error(f"Bedrock access denied: {e}", exc_info=True)
             raise HTTPException(status_code=403, detail="Access denied to Bedrock model")
         else:
-            logger.error(f"Chat error: {str(e)}", exc_info=True)
+            logger.error(f"Bedrock client error: {e}", exc_info=True)
             raise HTTPException(status_code=500, detail="An internal error occurred")
 
 
@@ -194,10 +208,12 @@ async def chat(request: ChatRequest):
         # Generate session ID if not provided, validate if provided
         if request.session_id:
             if not validate_session_id(request.session_id):
+                logger.warning(f"Invalid session ID format received: {request.session_id}")
                 raise HTTPException(status_code=400, detail="Invalid session ID format")
             session_id = request.session_id
         else:
             session_id = str(uuid.uuid4())
+            logger.info(f"Created new session: {session_id}")
 
         # Load conversation history
         conversation = load_conversation(session_id)
