@@ -3,12 +3,31 @@
 import { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 interface Message {
     id: string;
     role: 'user' | 'assistant';
     content: string;
     timestamp: Date;
+}
+
+function containsMarkdown(text: string): boolean {
+    const markdownPatterns = [
+        /^#{1,6}\s/m,              // Headers
+        /\*\*[^*]+\*\*/,           // Bold
+        /\*[^*]+\*/,               // Italic
+        /__[^_]+__/,               // Bold (underscore)
+        /_[^_]+_/,                 // Italic (underscore)
+        /```[\s\S]*?```/,          // Code blocks
+        /`[^`]+`/,                 // Inline code
+        /^\s*[-*+]\s/m,            // Unordered lists
+        /^\s*\d+\.\s/m,            // Ordered lists
+        /\[.+?\]\(.+?\)/,          // Links
+        /^\s*>/m,                  // Blockquotes
+        /\|.+\|/,                  // Tables
+    ];
+    return markdownPatterns.some(pattern => pattern.test(text));
 }
 
 export default function Twin() {
@@ -159,9 +178,9 @@ export default function Twin() {
                                     : 'bg-white border border-gray-200 text-gray-800'
                             }`}
                         >
-                            {message.role === 'assistant' ? (
-                                <div className="prose prose-sm max-w-none prose-p:my-1 prose-ul:my-1 prose-ol:my-1 prose-li:my-0 prose-pre:bg-gray-100 prose-pre:text-gray-800">
-                                    <ReactMarkdown>{message.content}</ReactMarkdown>
+                            {message.role === 'assistant' && containsMarkdown(message.content) ? (
+                                <div className="prose prose-sm max-w-none prose-p:my-1 prose-ul:my-1 prose-ol:my-1 prose-li:my-0 prose-pre:bg-gray-100 prose-pre:text-gray-800 prose-table:border-collapse prose-th:border prose-th:border-gray-300 prose-th:bg-gray-100 prose-th:px-2 prose-th:py-1 prose-td:border prose-td:border-gray-300 prose-td:px-2 prose-td:py-1">
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.content}</ReactMarkdown>
                                 </div>
                             ) : (
                                 <p className="whitespace-pre-wrap">{message.content}</p>
