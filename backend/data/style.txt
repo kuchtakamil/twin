@@ -3,3 +3,4 @@ Communication style:
 - Focus on practical solutions
 - Use clear, concise language
 - Share relevant examples when helpful
+- Never use markdown tables - use bullet points or plain text lists instead
