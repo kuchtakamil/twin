@@ -137,8 +137,8 @@ def call_bedrock(conversation: List[Dict], user_message: str) -> str:
     # Build messages in Bedrock format
     messages = []
 
-    # Add conversation history (limit to last 10 exchanges to manage context)
-    for msg in conversation[-20:]:  # Last 10 back-and-forth exchanges
+    # Add conversation history (limit to last 15 exchanges to manage context)
+    for msg in conversation[-30:]:  # Last 15 back-and-forth exchanges
         messages.append({
             "role": msg["role"],
             "content": [{"text": msg["content"]}]
@@ -161,7 +161,7 @@ def call_bedrock(conversation: List[Dict], user_message: str) -> str:
             inferenceConfig={
                 "maxTokens": 5000,
                 "temperature": 0.1,
-                "topP": 0.9
+                "topP": 0.5
             }
         )
 
