@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
 /* Smooth scrolling animation keyframe */
 @keyframes bounce {
