@@ -54,7 +54,7 @@ uv run deploy.py                 # Build Lambda deployment package (requires Doc
 - GitHub OIDC for CI/CD authentication
 
 ### Key Environment Variables
-- `BEDROCK_MODEL_ID` - Bedrock model (default: `amazon.nova-lite-v1:0`, may need `eu.` or `us.` prefix)
+- `BEDROCK_MODEL_ID` - Bedrock model (default: `openai.gpt-oss-120b-1:0`, some models may need `eu.` or `us.` prefix)
 - `USE_S3` / `S3_BUCKET` - Enable S3 for conversation storage
 - `CORS_ORIGINS` - Allowed origins for the API
 - `NEXT_PUBLIC_API_URL` - Backend API URL for frontend
@@ -65,4 +65,4 @@ To configure the digital twin's personality, edit files in `backend/data/`:
 - `facts.json` - Basic info including `full_name` and `name`
 - `summary.txt` - Personal/professional summary notes
 - `style.txt` - Communication style guidelines
-- `linkedin.pdf` - LinkedIn profile (optional, extracted via pypdf)
+
