@@ -51,7 +51,6 @@ MEMORY_DIR = os.getenv("MEMORY_DIR", "../memory")
 if USE_S3:
     s3_client = boto3.client("s3")
 
-
 # Request/Response models
 class ChatRequest(BaseModel):
     message: str = Field(..., min_length=1, max_length=4000)
