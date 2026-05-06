@@ -1,0 +1,418 @@
+{
+  "chunk_count": 17,
+  "chunks": [
+    {
+      "content": "Current Role: unemployed, during a transition to become AI Engineer",
+      "id": "facts-current-role-696ff38715c7",
+      "keywords": [
+        "current role",
+        "unemployed, during a transition to become AI Engineer"
+      ],
+      "metadata": {
+        "field": "current_role",
+        "is_current": true,
+        "visibility": "public"
+      },
+      "priority": 5,
+      "source": "facts",
+      "title": "Current Role"
+    },
+    {
+      "content": "Email: work@kamilkuchta.pl",
+      "id": "facts-email-ee4bfd61a3fd",
+      "keywords": [
+        "email",
+        "work@kamilkuchta.pl"
+      ],
+      "metadata": {
+        "field": "email",
+        "is_current": false,
+        "visibility": "public"
+      },
+      "priority": 3,
+      "source": "facts",
+      "title": "Email"
+    },
+    {
+      "content": "Full Name: Kamil Kuchta",
+      "id": "facts-full-name-0dfc2f8ad5b4",
+      "keywords": [
+        "full name",
+        "Kamil Kuchta"
+      ],
+      "metadata": {
+        "field": "full_name",
+        "is_current": false,
+        "visibility": "public"
+      },
+      "priority": 5,
+      "source": "facts",
+      "title": "Full Name"
+    },
+    {
+      "content": "Linkedin: https://www.linkedin.com/in/kamil-kuchta-dev/",
+      "id": "facts-linkedin-21612b32a447",
+      "keywords": [
+        "linkedin",
+        "https://www.linkedin.com/in/kamil-kuchta-dev/"
+      ],
+      "metadata": {
+        "field": "linkedin",
+        "is_current": false,
+        "visibility": "public"
+      },
+      "priority": 3,
+      "source": "facts",
+      "title": "Linkedin"
+    },
+    {
+      "content": "Location: Kraków",
+      "id": "facts-location-edc38136100f",
+      "keywords": [
+        "location",
+        "Kraków"
+      ],
+      "metadata": {
+        "field": "location",
+        "is_current": false,
+        "visibility": "public"
+      },
+      "priority": 3,
+      "source": "facts",
+      "title": "Location"
+    },
+    {
+      "content": "Name: Kamil",
+      "id": "facts-name-dabfa42fb270",
+      "keywords": [
+        "name",
+        "Kamil"
+      ],
+      "metadata": {
+        "field": "name",
+        "is_current": false,
+        "visibility": "public"
+      },
+      "priority": 5,
+      "source": "facts",
+      "title": "Name"
+    },
+    {
+      "content": "Previous Role: Senior Software Engineer",
+      "id": "facts-previous-role-6108de3749bd",
+      "keywords": [
+        "previous role",
+        "Senior Software Engineer"
+      ],
+      "metadata": {
+        "field": "previous_role",
+        "is_current": false,
+        "visibility": "public"
+      },
+      "priority": 3,
+      "source": "facts",
+      "title": "Previous Role"
+    },
+    {
+      "content": "Website: https://kamilkuchta.pl",
+      "id": "facts-website-2dcebf053c14",
+      "keywords": [
+        "website",
+        "https://kamilkuchta.pl"
+      ],
+      "metadata": {
+        "field": "website",
+        "is_current": false,
+        "visibility": "public"
+      },
+      "priority": 3,
+      "source": "facts",
+      "title": "Website"
+    },
+    {
+      "content": "I am a Senior Software Engineer with 12 years old experience. Mainly I was working in Java ecosystem. But now I work mostly in Python, and I am in a transition process to become an AI/ML Specialist. Dedicated to bridging the gap between robust backend architectures and cutting-edge AI. Although I don't have any commercial experience in AI/ML, I have put a lot of effort into studying the field independently and creating some simple projects to gain practical experience. Actively seeking opportunities to develop and implement AI-driven solutions. I can start the new job in the next 2 weeks in case of B2B or next week in case of the permanent contract. One of these projects is the digital twin with which you are currently chatting. I am open to starting a job either fully remotely or in a hybrid way, with two days in the office.",
+      "id": "summary-professional-summary-7d026f49995c",
+      "keywords": [
+        "ai/ml",
+        "ai-driven",
+        "digital twin",
+        "python",
+        "java",
+        "b2b",
+        "remote",
+        "hybrid",
+        "next",
+        "actively",
+        "backend",
+        "between",
+        "chatting",
+        "commercial",
+        "contract",
+        "creating",
+        "cutting-edge",
+        "dedicated",
+        "develop",
+        "digital",
+        "ecosystem",
+        "effort",
+        "gain",
+        "gap"
+      ],
+      "metadata": {
+        "section": "professional_summary",
+        "visibility": "public"
+      },
+      "priority": 4,
+      "source": "summary",
+      "title": "Professional summary"
+    },
+    {
+      "content": "My dream role is AI Engineer or AI Engineer Lead working on something that genuinely helps people — a product with real-world impact in a public-benefit domain. I want to work with the latest AI technologies, not just consume APIs, but actually understand how LLMs work under the hood: the architecture, the training, the inference stack. Ideally I have hands-on contact with the hardware AI runs on. I want to go deep, not just ship wrappers.",
+      "id": "summary-dream-job-f6e2783f0e02",
+      "keywords": [
+        "ai engineer",
+        "ai engineer lead",
+        "llm",
+        "llms",
+        "apis",
+        "architecture",
+        "lead",
+        "public-benefit",
+        "runs"
+      ],
+      "metadata": {
+        "section": "dream_job",
+        "visibility": "public"
+      },
+      "priority": 4,
+      "source": "summary",
+      "title": "Dream job"
+    },
+    {
+      "content": "Communication style: - Professional but approachable - Focus on practical solutions - Use clear, concise language - Share relevant examples when helpful - Never use markdown tables - use bullet points or plain text lists instead",
+      "id": "style-communication-style-7ee2e64bfdc7",
+      "keywords": [
+        "use",
+        "communication",
+        "style",
+        "approachable",
+        "bullet",
+        "clear",
+        "concise",
+        "examples",
+        "focus",
+        "helpful",
+        "instead",
+        "language",
+        "lists",
+        "markdown",
+        "never",
+        "plain",
+        "points",
+        "relevant",
+        "share",
+        "tables",
+        "text"
+      ],
+      "metadata": {
+        "section": "style",
+        "visibility": "public"
+      },
+      "priority": 2,
+      "source": "style",
+      "title": "Communication style"
+    },
+    {
+      "content": "I am a Senior Software Engineer with 12 years of experience in full-stack and backend development for mission-critical systems. I possess a strong foundation in building scalable microservices, API development, and cloud infrastructure. Recently, I have focused heavily on Generative AI, gaining hands-on experience integrating LLMs into web applications using Python, Vector Databases, and RAG architectures. I am eager to leverage my engineering maturity and AI skills to build innovative GenAI solutions.",
+      "id": "cv-cv-about-me-149b8442e82d",
+      "keywords": [
+        "generative ai",
+        "rag architecture",
+        "vector databases",
+        "backend development",
+        "api development",
+        "cloud infrastructure",
+        "mission-critical systems",
+        "llm",
+        "llms",
+        "rag",
+        "python",
+        "api",
+        "backend",
+        "cloud",
+        "databases",
+        "foundation",
+        "full-stack",
+        "gaining",
+        "genai",
+        "generative",
+        "heavily",
+        "infrastructure",
+        "integrating",
+        "leverage"
+      ],
+      "metadata": {
+        "section": "about_me",
+        "visibility": "public"
+      },
+      "priority": 3,
+      "source": "cv",
+      "title": "CV: About Me"
+    },
+    {
+      "content": "• Programming Languages: Python (FastAPI, Backend Services), Java (12+ years), SQL, Bash • Generative AI & LLMs: RAG Architecture, Context Engineering, Embeddings, Agentic Workflows, Multi-Agent Orchestration, LLM Integration (GPT, Gemini) • Cloud & DevOps: AWS (Bedrock, Lambda, S3), Kubernetes, Docker, CI/CD (Jenkins), IaC (Terraform) • Backend Development: Microservices Architecture, REST API, Scalability, Fault Tolerance, Observability (Kibana) • Data & Storage: PostgreSQL, Vector Databases (integration, retrieval) • Development Tools: Git, IntelliJ, pip, uv • AI-Assisted Workflows: Claude Code, Antigravity, Github Copilot • Methodologies: Agile (Scrum, Kanban), Code Review, Knowledge Sharing",
+      "id": "cv-cv-key-competences-07a2de14ab86",
+      "keywords": [
+        "generative ai",
+        "context engineering",
+        "rag architecture",
+        "vector databases",
+        "llm integration",
+        "multi-agent orchestration",
+        "agentic workflows",
+        "backend services",
+        "backend development",
+        "microservices architecture",
+        "rest api",
+        "fault tolerance",
+        "code review",
+        "knowledge sharing",
+        "aws",
+        "aws bedrock",
+        "bedrock",
+        "lambda",
+        "s3",
+        "terraform",
+        "kubernetes",
+        "docker",
+        "jenkins",
+        "fastapi"
+      ],
+      "metadata": {
+        "section": "skills",
+        "visibility": "public"
+      },
+      "priority": 4,
+      "source": "cv",
+      "title": "CV: Key Competences"
+    },
+    {
+      "content": "09.2024 – 10.2025 Senior Software Engineer, Jacobs Project: PA Consulting – Client: UK Home Office – developed a highly regulated visa processing system. Focused on backend API design, CI/CD automation and implemented deterministic document parsing for automated data ingestion. Tech stack: Java, Python, SQL, Jenkins, Microservices, Kibana, Kubernetes 03.2023 – 08.2024 Senior Software Engineer, Motorola Solutions Project: Dimetra Connect. Built secure backend services for mission-critical communications. Tech stack: Java, Python, Bash, TLS, Public Key Infrastructure 01.2021 – 02.2023 Senior Software Engineer, Motorola Solutions Project: A component for routing calls between Dimetra and LTE audio systems. Focused on high availability, fault tolerance, and comprehensive automated testing frameworks. Tech stack: Erlang, Jenkins, Common Test Framework 02.2017 – 12.2020 Senior Software Engineer, Motorola Solutions Project: A web application for scanning and monitoring the Astro and Dimetra systems Tech stack: Java 8, Spring, Angular & TypeScript, Kotlin, Jenkins, PostgreSQL 04.2014 – 01.2017 Software Engineer, Motorola Solutions Project: A fault manager for the Astro and PSLTE systems. Ensured high reliability and defect resolution for critical monitoring components. Tech stack: Java 6 – 7, Swing 09.2012 – 06.2014 Java Developer, AGH University of Science and Technology Project: A fault manager for the Astro and PSLTE systems. Contributed to core feature development and requirement analysis. Tech stack: Java",
+      "id": "cv-cv-work-experience-541f0c3bd949",
+      "keywords": [
+        "backend services",
+        "api design",
+        "fault tolerance",
+        "high availability",
+        "public key infrastructure",
+        "automated data ingestion",
+        "document parsing",
+        "kubernetes",
+        "jenkins",
+        "python",
+        "java",
+        "erlang",
+        "kotlin",
+        "typescript",
+        "angular",
+        "spring",
+        "postgresql",
+        "sql",
+        "bash",
+        "jacobs",
+        "motorola solutions",
+        "uk home office",
+        "pa consulting",
+        "dimetra"
+      ],
+      "metadata": {
+        "section": "work_experience",
+        "visibility": "public"
+      },
+      "priority": 4,
+      "source": "cv",
+      "title": "CV: Work Experience"
+    },
+    {
+      "content": "2005 – 2011 AGH University of Science and Technology Master’s degree of Computer Science, EAiE department, part-time course of study.",
+      "id": "cv-cv-education-afbb4539b5f0",
+      "keywords": [
+        "science",
+        "agh",
+        "computer",
+        "eaie",
+        "education",
+        "masters",
+        "part-time",
+        "university"
+      ],
+      "metadata": {
+        "section": "education",
+        "visibility": "public"
+      },
+      "priority": 3,
+      "source": "cv",
+      "title": "CV: Education"
+    },
+    {
+      "content": "• Polish – native • English – B2+/professional working proficiency; daily written and spoken communication with UK-based teams",
+      "id": "cv-cv-languages-83ded17d4386",
+      "keywords": [
+        "communication",
+        "english",
+        "languages",
+        "polish",
+        "proficiency",
+        "spoken",
+        "teams",
+        "uk-based",
+        "written"
+      ],
+      "metadata": {
+        "section": "languages",
+        "visibility": "public"
+      },
+      "priority": 3,
+      "source": "cv",
+      "title": "CV: Languages"
+    },
+    {
+      "content": "• AI-Powered Professional Profile Agent– Digital Twin– twin.kamilkuchta.pl Developed a RAG-based intelligent system acting as a digital twin. Designed backend APIs to orchestrate LLM responses, manage domain-specific data, and optimize prompts. Tech: Python, FastAPI, AWS (Bedrock, Lambda, S3), GitHub Action • Equity Valuation Agent– (AWS migration in progress) Designed and implemented a multi-agent AI pipeline that automates equity due diligence Tech: Python, LangChain, LangGraph, ChromaDB, AWS (Bedrock, S3, Lambda, Fargate), Terraform • YouTube Transcript to Infographic Generator Automated content processing pipeline integrating Gemini API. Tech: Python, Luigi, Gemini API, Prompt Engineering",
+      "id": "cv-cv-projects-4041f2dcd801",
+      "keywords": [
+        "digital twin",
+        "equity valuation",
+        "youtube transcript",
+        "infographic generator",
+        "prompt engineering",
+        "aws",
+        "aws bedrock",
+        "bedrock",
+        "lambda",
+        "s3",
+        "terraform",
+        "fastapi",
+        "llm",
+        "rag",
+        "python",
+        "langchain",
+        "langgraph",
+        "chromadb",
+        "gemini api",
+        "luigi",
+        "agent",
+        "api",
+        "digital",
+        "equity"
+      ],
+      "metadata": {
+        "section": "projects",
+        "visibility": "public"
+      },
+      "priority": 4,
+      "source": "cv",
+      "title": "CV: Projects"
+    }
+  ],
+  "schema_version": 1
+}
