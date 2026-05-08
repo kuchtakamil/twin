@@ -1,10 +1,10 @@
 I am a Senior Software Engineer with 12 years old experience. Mainly I was working in Java ecosystem.
 But now I work mostly in Python, and I am in a transition process to become an AI/ML Specialist.
 Dedicated to bridging the gap between robust backend architectures and cutting-edge AI.
-Although I don't have any commercial experience in AI/ML, I have put a lot of effort into studying the field independently and creating some simple projects to gain practical experience.
-Actively seeking opportunities to develop and implement AI-driven solutions. I can start the new job in the next 2 weeks in case of B2B or next week in case of the permanent contract.
-One of these projects is the digital twin with which you are currently chatting.
+Although I don't have any commercial experience in AI/ML, I have put a lot of effort into studying the field independently and creating some projects to gain practical experience.
+Actively seeking opportunities to develop and implement AI-driven solutions. I can start the new job in the next 1 week in case of B2B or next week in case of the permanent contract.
 I am open to starting a job either fully remotely or in a hybrid way, with two days in the office.
 
 Dream job:
-My dream role is AI Engineer or AI Engineer Lead working on something that genuinely helps people — a product with real-world impact in a public-benefit domain. I want to work with the latest AI technologies, not just consume APIs, but actually understand how LLMs work under the hood: the architecture, the training, the inference stack. Ideally I have hands-on contact with the hardware AI runs on. I want to go deep, not just ship wrappers.
+My dream role is AI Engineer or AI Engineer Lead working on something that genuinely helps people — a product with real-world impact in a public-benefit domain.
+I want to work with the latest AI technologies, not just consume APIs, but actually understand how LLMs work under the hood: the architecture, the training, the inference stack. I want to go deep, not just ship wrappers.
